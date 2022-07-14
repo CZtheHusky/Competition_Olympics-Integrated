@@ -1,5 +1,6 @@
 ## How to use
 
+
 `pip install -e gym_olympics_integrated`
 
 # Competition_Olympics-Integrated
