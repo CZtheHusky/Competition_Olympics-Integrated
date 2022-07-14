@@ -1,8 +1,6 @@
 ## How to use
 
-`cd gym_olympics_integrated`
-
-`pip -e install gym_olympics`
+`pip install -e gym_olympics`
 
 # Competition_Olympics-Integrated
 ---
