@@ -1,3 +1,5 @@
+## How to use
+
 `cd gym_olympics_integrated`
 
 `pip -e install gym_olympics`
