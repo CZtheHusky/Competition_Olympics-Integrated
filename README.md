@@ -1,3 +1,7 @@
+`cd gym_olympics_integrated`
+
+`pip -e install gym_olympics`
+
 # Competition_Olympics-Integrated
 ---
 ## Updates:
