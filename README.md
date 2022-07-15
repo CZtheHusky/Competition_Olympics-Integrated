@@ -3,6 +3,16 @@
 
 `pip install -e gym_olympics_integrated`
 
+`env = gym.make('gym_olympics:rd_running-v0')`
+
+`env = gym.make('gym_olympics:running-v0', map_id=map_id)`
+
+`env = gym.make('gym_olympics:table_hockey-v0')`
+
+`env = gym.make('gym_olympics:football-v0')` 
+
+`env = gym.make('gym_olympics:wrestling-v0')`
+
 # Competition_Olympics-Integrated
 ---
 ## Updates:
