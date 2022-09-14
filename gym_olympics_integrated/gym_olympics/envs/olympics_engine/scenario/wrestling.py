@@ -1,5 +1,5 @@
-from olympics_engine.core import OlympicsBase
-from olympics_engine.viewer import Viewer, debug
+from ..core import OlympicsBase
+from ..viewer import Viewer, debug
 import pygame
 import sys
 import random
@@ -32,7 +32,7 @@ class wrestling(OlympicsBase):
         self.max_step = map['env_cfg']['max_step']
         self.print_log = False
 
-        self.draw_obs = True
+        self.draw_obs = False
         self.show_traj = False
         self.beauty_render = False
 

@@ -1,5 +1,5 @@
-from olympics_engine.core import OlympicsBase
-from olympics_engine.viewer import Viewer, debug
+from ..core import OlympicsBase
+from ..viewer import Viewer, debug
 import pygame
 import sys
 import time
@@ -38,7 +38,7 @@ class football(OlympicsBase):
 
         self.print_log = False
 
-        self.draw_obs = True
+        self.draw_obs = False
         self.show_traj = False
         self.beauty_render = False
 

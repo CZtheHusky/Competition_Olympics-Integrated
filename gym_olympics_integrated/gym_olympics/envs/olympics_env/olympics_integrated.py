@@ -3,28 +3,28 @@ import os
 import sys
 from pathlib import Path
 
-CURRENT_PATH = str(Path(__file__).resolve().parent.parent.parent)
-olympics_path = os.path.join(CURRENT_PATH, "olympics_engine")
-sys.path.append(olympics_path)
-sys.path.append(CURRENT_PATH)
+# CURRENT_PATH = str(Path(__file__).resolve().parent.parent.parent)
+# olympics_path = os.path.join(CURRENT_PATH, "olympics_engine")
+# sys.path.append(olympics_path)
+# sys.path.append(CURRENT_PATH)
 
 from olympics_engine.AI_olympics import AI_Olympics
 
-from utils.box import Box
+from olympics_tools import Box
 from olympics_env.simulators.game import Game
 
 import numpy as np
 
 
 class OlympicsIntegrated(Game):
-    def __init__(self, conf, seed=None):
+    def __init__(self, conf, subgame, map_idx=None, max_episode_steps=400, seed=None, **kwargs):
         super(OlympicsIntegrated, self).__init__(conf['n_player'], conf['is_obs_continuous'], conf['is_act_continuous'],
                                                  conf['game_name'], conf['agent_nums'], conf['obs_type'])
 
         self.seed = seed
         self.set_seed()
 
-        self.env_core = AI_Olympics(random_selection=True, minimap=False)
+        self.env_core = AI_Olympics(subgame=subgame, map_idx=map_idx, max_episode_steps=max_episode_steps, minimap=False, **kwargs)
         self.max_step = int(conf['max_step'])
         self.joint_action_space = self.set_action_space()
         self.action_dim = self.joint_action_space
@@ -78,10 +78,16 @@ class OlympicsIntegrated(Game):
             raise Exception("Input joint action dimension should be {}, not {}".format(
                 self.n_player, len(joint_action)))
 
+        for idx, team_action in enumerate(joint_action):
+            if not (-100 <= team_action[0][0] <= 200) or not (-30 <= team_action[1][0] <= 30):
+                joint_action[idx] = [[0], [0]]
+
+        return joint_action
+
     def step(self, joint_action):
-        self.is_valid_action(joint_action)
-        info_before = self.step_before_info()
+        joint_action = self.is_valid_action(joint_action)
         joint_action_decode = self.decode(joint_action)
+        info_before = self.step_before_info()
         all_observations, reward, done, info_after = self.env_core.step(joint_action_decode)
         info_after = ''
         self.current_state = all_observations
