@@ -4,7 +4,7 @@ git clone https://github.com/CZtheHusky/Competition_Olympics-Integrated.git
 cd Competition_Olympics-Integrated
 pip install -e gym_olympics_integrated
 env = gym.make('jidi-olympics-rd_running-v0')
-env = gym.make('jidi-olympics-running-v0, map_id=map_id)
+env = gym.make('jidi-olympics-running-v0, map_idx=map_idx)
 env = gym.make('jidi-olympics-table-hockey-v0')
 env = gym.make('jidi-olympics-football-v0')
 env = gym.make('jidi-olympics-wrestling-v0')
