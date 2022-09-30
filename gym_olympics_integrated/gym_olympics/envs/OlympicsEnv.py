@@ -45,7 +45,6 @@ class OlympicsEnv(gym.Env):
         self._env.seed(seed)
 
     def obs_wrapper(self, obs):
-        assert obs[0]['obs']['agent_obs'] is not None and obs[1]['obs']['agent_obs'] is not None
         if obs[0]['obs']['agent_obs'] is None or obs[1]['obs']['agent_obs'] is None:
             return np.zeros([2, 1602], dtype=np.float32)
         obs = [obs[0]['obs'], obs[1]['obs']]
