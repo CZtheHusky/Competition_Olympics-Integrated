@@ -138,7 +138,6 @@ class AI_Olympics:
                         j['energy'] = 1000
                     else:
                         j['energy'] = self.current_game.agent_list[i].energy
-        assert obs is not None
         if self.done:
             # print('game score = ', self.game_score)
             if self.game_score[0] > self.game_score[1]:
