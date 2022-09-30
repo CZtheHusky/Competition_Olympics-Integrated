@@ -46,7 +46,7 @@ class OlympicsEnv(gym.Env):
 
     def obs_wrapper(self, obs):
         if obs is None:
-            return obs
+            return np.zeros((2, 1602), dtype=np.float32)
         obs = [obs[0]['obs'], obs[1]['obs']]
         array_obs = [obs[0]['agent_obs'].flatten(), obs[0]['agent_obs'].flatten()]
         game_mode = [self.new_game_mapper[obs[0]['game_mode']], self.new_game_mapper[obs[1]['game_mode']]]
