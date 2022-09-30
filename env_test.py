@@ -6,6 +6,7 @@ all_levels = gym_olympics.ALL_ENVS
 
 for env_name in all_levels:
     print(env_name)
+    env_name = 'jidi-olympics-curling-v0'
     env = gym.make(env_name, map_idx=3)
     for i in range(2):
         obs = env.reset()
