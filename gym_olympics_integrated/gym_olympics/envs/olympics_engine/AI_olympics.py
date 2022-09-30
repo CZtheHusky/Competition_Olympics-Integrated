@@ -138,7 +138,7 @@ class AI_Olympics:
                         j['energy'] = 1000
                     else:
                         j['energy'] = self.current_game.agent_list[i].energy
-
+        assert obs is not None
         if self.done:
             # print('game score = ', self.game_score)
             if self.game_score[0] > self.game_score[1]:
@@ -150,10 +150,9 @@ class AI_Olympics:
             else:
                 self.final_reward = [0, 0]
                 # print('Results: Draw!')
-
-            return obs, self.final_reward, self.done, ''
-        else:
-            return obs, reward, self.done, ''
+            if len(self.game_pool) != 1:
+                return obs, self.final_reward, self.done, ''
+        return obs, reward, self.done, ''
 
     def is_terminal(self):
         return self.done
